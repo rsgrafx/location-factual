@@ -2,7 +2,13 @@
 <head>
   <title>Location Finder</title>
 </head>
-<body>
-  <p>Hello</p>
+<body ng-app='placesNearMe' >
+  
+  <div ng-controller='PlacesCtrl' ng-init='getLocation()'>
+    <h3>{{ position }}</h3>
+  </div>
+
+  <script src="javascript/angular.min.js"></script>
+  <script src='javascript/app.js'></script>
 </body>
 </html>
