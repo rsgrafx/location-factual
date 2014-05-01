@@ -50,8 +50,13 @@ describe Location do
           .to raise_error ArgumentError
       end
      end
-
   end
 
+  describe '#nearest_city' do 
+    context 'when coordinates are provided' do 
+      subject { Location.new(latitude: 27.7821857, longitude: -82.6404965).nearest_city }
+      it { should be_a String  }
+    end
+  end
 
 end
