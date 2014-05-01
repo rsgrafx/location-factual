@@ -1,18 +1,32 @@
+require 'rubygems'
+require 'geocoder'
+
+require_relative 'venue'
+
 class Location
+
   R = 3_959
 
-  attr_reader :longitude, :latitude
+  attr_accessor :longitude, :latitude, :current_location
   
   def initialize(longitude: longitude, latitude: latitude)
     @longitude = longitude
     @latitude  = latitude
   end
 
+  def nearest_city
+    result = Geocoder.search( "#{self.latitude}, #{self.longitude}" )
+    self.current_location = result.first.city
+  end
+
+  def wifi_nearby
+    Venue.new(self.current_location).restaurants_with_wifi
+  end
+
   def near?(latitude: latitude, longitude: longitude, radius: radius)
     raise ArgumentError unless radius >= 0
     location = Location.new(latitude: latitude, longitude: longitude)      
     (R * haversine_distance(location)) <= radius
-
   end
 
   private
