@@ -1,5 +1,5 @@
 // The Angular Appplication.
-var locationFinder = angular.module('placesNearMe', [])
+var locationFinder = angular.module('placesNearMe', ['locationFinder.directives'])
 
 locationFinder.controller('PlacesCtrl', ['$scope', '$window', '$http', function($scope, $window, $http){
   $scope.position = null;
@@ -31,27 +31,6 @@ locationFinder.controller('PlacesCtrl', ['$scope', '$window', '$http', function(
           alert(error)
       });
   };
-
-
-  $scope.checkCity = function() {
-    if ($scope.another.city) {
-      console.log( $scope.another.city);
-      $http({ url: '/locations', 
-              data: JSON.stringify( {check_city: $scope.another.city}), 
-              method: 'POST', 
-              headers: 'Content-Type: application/json'
-            }).success(function(data) {
-              $scope.locations = data;
-              console.log(data)
-          })
-    }
-  }
 }])
 
 
-locationFinder.controller('MorePlacesCtrl', ['$scope', function($scope) {
-
-  $scope.checkCity = function() {
-    console.log('This is Nice');
-  }
-}])
