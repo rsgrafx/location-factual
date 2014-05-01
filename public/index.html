@@ -3,7 +3,7 @@
   
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.2.2/css/foundation.css">
   <title>Location Finder</title>
-
+  <script src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false&language=en"></script>
 </head>
 
 <body ng-app='placesNearMe' >
@@ -19,25 +19,31 @@
 </nav>  
   
   <div ng-controller='PlacesCtrl' ng-init='getLocation()'>
+
+    <div class='row'> 
+      <h1>Go. Enjoy. Share.</h1>
+      <form name="check_city_locations">
+        <input ng-model="chosenPlace" type="text" autofocus="autofocus" class="form-control" googleplace>
+      </form>
+      
+    </div>
+
     <div class='row'>
-      
-      <h3>{{ locations.locations_count }} Venue's found</h3>
-      <div>
-        {{ locations.wifi }}
-      </div>
-      
-      <div ng-repeat='loc in locations.wifi'> 
-        <h3> {{ loc.name }}</h3>
-        <span> {{ loc.locality }} </span>
+      <h3 ng-show='locations.locations_count' class='subheader'>{{ locations.locations_count }} Venue's found Near {{ locations.city }}</h3>
+        
+        <div ng-repeat='loc in locations.wifi' class='panel'> 
+        <span ng-show='loc.address' class='label'> {{ loc.address }} </span>
+        <h5> {{ loc.name }}</h4>
+        <span class='subheader'> {{ loc.locality }} </span>
         <b><span> {{ loc.tel}} </span></b>
-        <span> {{ loc.address }} </span>
+        
         <a ng-href={{loc.website}}></a>
       </div>
     </div>
   </div>
-
   <script src="javascript/angular.min.js"></script>
   <script src='javascript/app.js'></script>
+  <script src='javascript/directives.js'></script>
 
 </body>
 </html>
