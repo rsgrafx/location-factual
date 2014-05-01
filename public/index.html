@@ -1,14 +1,43 @@
 <html>
 <head>
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.2.2/css/foundation.css">
   <title>Location Finder</title>
+
 </head>
+
 <body ng-app='placesNearMe' >
   
+  <nav class='top-bar'>
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="#">Location Finder.app</a></h1>
+      </li>
+       <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+</nav>  
+  
   <div ng-controller='PlacesCtrl' ng-init='getLocation()'>
-    <h3>{{ position }}</h3>
+    <div class='row'>
+      
+      <h3>{{ locations.locations_count }} Venue's found</h3>
+      <div>
+        {{ locations.wifi }}
+      </div>
+      
+      <div ng-repeat='loc in locations.wifi'> 
+        <h3> {{ loc.name }}</h3>
+        <span> {{ loc.locality }} </span>
+        <b><span> {{ loc.tel}} </span></b>
+        <span> {{ loc.address }} </span>
+        <a ng-href={{loc.website}}></a>
+      </div>
+    </div>
   </div>
 
   <script src="javascript/angular.min.js"></script>
   <script src='javascript/app.js'></script>
+
 </body>
 </html>
