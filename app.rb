@@ -33,10 +33,17 @@ class LocationFinder < Sinatra::Base
 
   post '/locations' do
     content_type :json
+
+    if params['check_city']
+      loc = Venue.new(params['check_city'])
+      { city: @city, wifi: loc.restaurants_with_wifi , locations_count: loc.restaurants_with_wifi.count   }.to_json
+    else
+      loc = Location.new(latitude: params['latitude'], longitude: params['longitude'])
+      @city ||= loc.nearest_city
+      { city: @city, wifi: loc.wifi_nearby, locations_count: loc.wifi_nearby.count }.to_json
+    end
+
     
-    loc = Location.new(latitude: params['latitude'], longitude: params['longitude'])
-    @city ||= loc.nearest_city
-    { city: @city, wifi: loc.wifi_nearby, locations_count: loc.wifi_nearby.count }.to_json
   end
 
 end
