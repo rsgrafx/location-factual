@@ -27,6 +27,10 @@ class LocationFinder < Sinatra::Base
     send_file File.join(settings.public_folder, 'index.html')
   end
 
+  get '/views/:filename' do 
+    send_file File.join((settings.public_folder + 'views/'), "#{params['filename']}")
+  end
+
   get '/locations' do
     content_type :json
   end
