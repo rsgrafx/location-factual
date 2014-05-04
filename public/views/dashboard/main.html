@@ -1,0 +1,22 @@
+<div ng-controller='HomeCtrl' ng-init='getLocation()'>
+
+  <div class='row'> 
+    <h1>Go. Enjoy. Share.</h1>
+    <form name="check_city_locations">
+      <input ng-model="chosenPlace" type="text" autofocus="autofocus" class="form-control" googleplace>
+    </form>
+    
+  </div>
+
+  <div class='row'>
+    <h3 ng-show='locations.locations_count' class='subheader'>{{ locations.locations_count }} Venue's found Near {{ locations.city }}</h3>
+      
+      <div ng-repeat='loc in locations.wifi' class='panel'> 
+        <span ng-show='loc.address' class='label'> {{ loc.address }} </span>
+        <h5> {{ loc.name }}</h4>
+        <span class='subheader'> {{ loc.locality }} </span>
+        <b><span> {{ loc.tel}} </span></b>
+        <a ng-href={{loc.website}}></a>
+    </div>
+  </div>
+</div>

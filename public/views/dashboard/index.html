@@ -1,0 +1,31 @@
+<html>
+<head>
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.2.2/css/foundation.css">
+  <title>Location Finder</title>
+  <script src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false&language=en"></script>
+</head>
+
+<body ng-app='LocationFinderDashboard' >
+  
+  <nav class='top-bar'>
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="#">App Dashboard</a></h1>
+      </li>
+       <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+  </nav>  
+  
+  <ng-view></ng-view>
+
+  <script src="javascript/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+  <script src='javascript/app.dashboard/index.js'></script>
+  <script src='javascript/app.dashboard/app.session.js'></script>
+  <script src='javascript/app.dashboard/app.controllers.js'></script>
+  <script src='javascript/directives.js'></script>
+
+</body>
+</html>

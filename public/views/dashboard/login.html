@@ -1,0 +1,18 @@
+<div class='row'>
+    <div class='small-6 large-centered columns' >
+        <form name="loginForm" class="auth-form">
+            <h2 class="auth-form-heading">Please sign in</h2><br/>    
+            <div class="alert alert-warning" ng-show="authReason">{{authReason}}</div>
+
+            <div class="alert alert-error" ng-show="authError">{{authError}}</div>
+
+        <input type="text" class="input-block-level" placeholder="Email address" ng-model="user.email" required autofocus>
+        <input type="password" class="input-block-level" placeholder="Password" ng-model="user.password" required>
+        <label class="checkbox">
+            <input type="checkbox" value="remember-me"> Remember me
+        </label><br/>
+        <a class="button tiny round" type="submit" ng-click="login(user)" ng-disabled="loginForm.$invalid">Sign in</a>
+        <a class="button tiny round secondary" href="#!register">Register</a>
+        </form>
+    </div>
+</div>
