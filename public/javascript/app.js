@@ -1,5 +1,10 @@
 // The Angular Appplication.
-var locationFinder = angular.module('placesNearMe', ['locationFinder.directives'])
+var locationFinder = angular.module('placesNearMe', [ 
+  'ngRoute',
+  'locationFinder.authentication',
+  'locationFinder.routes',
+  'locationFinder.directives'
+  ])
 
 locationFinder.controller('PlacesCtrl', ['$scope', '$window', '$http', function($scope, $window, $http){
   $scope.position = null;

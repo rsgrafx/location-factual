@@ -1,0 +1,34 @@
+<div ng-controller='PlacesCtrl' ng-init='getLocation()'>        
+        <section class="header-page header-page-gallery"  class='row' >
+            <div>
+                <h2 class="header-pagetitle">Go. Enjoy. Share.<br/></h2>
+                <span id="enter-form" class='small-10 large-8 large-centered' >
+                    <form name="check_city_locations">
+                        <input ng-model="chosenPlace" type="text" autofocus="autofocus" class="form-control" googleplace class='large-8'>
+                    </form>
+                </span>
+            </div>
+        </section>
+
+        <section>
+            <div ng-repeat='loc in locations.wifi' class="large-4 small-12 columns blue">
+                <div class="titledaysinglepostmasonry">        
+                    <p class="titlesinglepostmasonry">{{ loc.name }}</p>
+                    <div class="daysinglepostmasonry">
+                    <p>15</p>
+                        <span>MAY</span>
+                    </div>    
+                </div> 
+                <p class="descriptionsinglepostmasonry">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin cursus, elit vitae fermentum hendrerit, neque erat fringilla nibh, vel sodales sem diam nec nunc. Donec mattis blandit metus ut volutpat. Quisque orci lectus, sodales at cursus et, gravida quis nisl.</p>   
+                <a class="areadmoresinglepostmasonry" href="guide-profile.html"><p class="readmoresinglepostmasonry">See Guide</p></a>
+            </div>
+        <!--  -->
+            <div class="contentarchivepagination paginationmasonry">
+                <div class="archivepagination">
+                    <a title="Previous Posts" class="btn prevbtn tooltip" href="#"><img alt="" src="vendor/images/blog/prevpagination.png"></a>
+                    <a title="Next Posts" class="btn nextbtn tooltip" href="blog-masonry-with-3-column-2.html"><img alt="" src="vendor/images/blog/nextpagination.png"></a>
+                </div>
+            </div>
+        </section>
+        <!--end internal page--> 
+</div>
