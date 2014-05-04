@@ -1,0 +1,338 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+ 
+    <meta charset="utf-8">  
+    
+    <title>Location Finder</title> <!--insert your title here-->  
+    <meta name="description" content="Myhotspot Go. Enjoy. Share."> <!--insert your description here-->  
+    <meta name="author" content="Orion Engleton"> <!--insert your name here-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--meta responsive-->
+    
+  	<!--START CSS--> 
+    <link rel="stylesheet" href="vendor/css/style.css"> <!--main-->
+    <link rel="stylesheet" href="vendor/css/responsive.css"> <!--responsive-->
+    <link rel="stylesheet" href="vendor/rs-plugin/css/settings.css" media="screen" /> <!--rev slider-->
+    <link rel="stylesheet" href="vendor/showbizpro/css/settings.css" media="screen" /> <!--showbiz-->
+    <link rel="stylesheet" href="vendor/css/animate.css"> <!--animate-->
+    <link rel="stylesheet" href="vendor/css/superfish.css" media="screen"> <!--menu-->
+    <link rel="stylesheet" href="vendor/css/fancybox/jquery.fancybox.css"> <!--main fancybox-->
+    <link rel="stylesheet" href="vendor/css/fancybox/jquery.fancybox-thumbs.css"> <!--fancybox thumbs-->
+    <link rel="stylesheet" href="vendor/css/isotope.css"> <!--isotope-->
+    <link rel="stylesheet" href="vendor/css/flexslider.css"> <!--flexslider-->
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.2.2/css/foundation.css">
+    
+    <script src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false&language=en"></script>
+    <!--END CSS-->
+    
+    <!--google fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Signika:400,300,600,700' rel='stylesheet' type='text/css'>
+    
+    <!--[if lt IE 9]>  
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>  
+    <![endif]-->  
+    
+    <!--FAVICONS-->
+    <link rel="shortcut icon" href="vendor/images/favicon/favicon.ico">
+    <link rel="apple-touch-icon" href="vendor/images/favicon/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="vendor/images/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="vendor/images/favicon/apple-touch-icon-114x114.png">
+    <!--END FAVICONS-->
+    
+
+    <!-- Place in its own file later -->
+    <style type="text/css">
+
+    .top-bar {
+        overflow: hidden;
+        height: 60px;
+        background-color: #fff;
+    } 
+    #listyourvenue.orange {
+        background-color:#F3A46B;
+    }
+    section.shareyourstory div {
+        text-align: center;
+    }
+    section.shareyourstory {
+        clear: both;
+    }
+    section.shareyourstory div a {
+        margin: 30px 20px 0 20px;
+    }
+
+    #footer div.links .bottom-links a {
+        color: #fff !important;
+    }
+    span#enter-form form input{
+        width: 90%;
+        margin: 0 5%;
+    }
+
+    .titlesinglepostmasonry  {
+      width: 75%;
+      padding: 20px 5px 0 10px;
+    }
+    .titlesinglepostmasonry p {
+      line-height: 1.4em; font-size: 0.8em;
+    }
+
+    </style>
+    
+</head>  
+
+<body id="startpage" ng-app='placesNearMe'>
+<!--start left menu open-->
+<div class="leftmenuopen leftmenuopendark"> <!--leftmenuopenlight or leftmenuopendark-->
+    <p class="titlecloseleftmenu">OUR BEST DESTINATIONS</p>
+    <ul>
+        <li class="evidenceleftmenu"><p class="red">NORT AMERICA<span class="bulletevidenceleftmenu"></span></p></li>
+        <li><p><a href="#">New York</a></p></li>
+        <li><p><a href="#">Los Angeles</a></p></li>
+        <li><p><a href="#">San Francisco</a></p></li>
+        <li><p><a class="leftmenumore" href="#">See more</a></p></li>
+        <li class="evidenceleftmenu"><p class="yellow">SOUTH AMERICA<span class="bulletevidenceleftmenu"></span></p></li>
+        <li><p><a href="#">Rio De Janeiro</a></p></li>
+        <li><p><a href="#">Buenos Aires</a></p></li>
+        <li><p><a href="#">Ushuaia</a></p></li>
+        <li><p><a class="leftmenumore" href="#">See more</a></p></li>
+		<li class="evidenceleftmenu"><p class="green">EUROPE<span class="bulletevidenceleftmenu"></span></p></li>
+        <li><p><a href="#">Rome</a></p></li>
+        <li><p><a href="#">Paris</a></p></li>
+        <li><p><a href="#">London</a></p></li>
+        <li><p><a class="leftmenumore" href="#">See more</a></p></li>
+    </ul>
+</div>
+<!--end left menu open-->
+<!--start header-->
+<!-- fade-down animate1 navigationmenulight animated fadeInDown -->
+<!-- fade-down animate1 navigationmenulight -->
+<header id="navigationmenu" class="navigationmenulight top-bar">
+	
+    <!--start left menu close-->
+    <div class="leftmenuclose">
+    	<img alt="" src="vendor/images/header/leftmenuclose.png"/>
+    </div>
+    <!--end left menu close-->
+    <!--start container-->
+    <div class="container" style='background-color: #fff;'>
+        <!--start navigation-->
+        <div class="row gridnavigation">
+            <!-- <img class="logo animate4" alt="" src="vendor/images/logo.png" /> -->
+        	<!--start navigation-->
+
+        <ul class='title-area'>
+             <li class='name'>
+                <a href="/"><h3>Go Enjoy Share</h3></a>
+            </li>
+        </ul>
+
+        <ul class="sf-menu" id="nav">
+            <li class="current orange">
+            	<span class="menufilter"></span>
+                <a href="app/users/sign_in"><strong>Login</strong></a>
+            </li>
+            
+            <li class="orange">
+            	<span class="menufilter"></span>
+                <a href="app/users/sign_in"><strong>Sign Up</strong></a>
+            </li>	
+
+            <li class="orange">
+              <span class="menufilter"></span>
+                <a href="app/users/auth/twitter"><strong>Login w/ Twitter</strong></a>
+            </li> 
+
+        </ul>   
+        <!--end navigationmenu-->	     
+<!--         <div class="rightsearchclose">
+            <img alt="" src="vendor/images/header/rightsearch.png">
+        </div>   
+ -->
+        </div>
+        <!--end navigation-->
+    </div>
+    <!--end container-->
+</header>
+<!--end header-->
+
+<!--start right search-->
+<div class="rightsearchopen">
+
+    <!--search form-->
+    <form role="search" method="get" id="searchform" class="searchform" action="#">
+        <div>
+            <label class="screen-reader-text" for="s">SEARCH</label>
+            <input type="text" value="" name="s" id="s" />
+            <input type="submit" id="searchsubmit" value="Search" />
+        </div>
+    </form>
+    <!--end search form-->
+    
+    <span class="rightsearchopenclose"></span>
+     
+</div>
+<!--end right search-->
+<div ng-controller='PlacesCtrl' ng-init='getLocation()'>        
+        <section class="header-page header-page-gallery"  class='row' >
+            <div>
+                <h2 class="header-pagetitle">Go. Enjoy. Share.<br/></h2>
+                <span id="enter-form" class='small-10 large-8 large-centered' >
+                    <form name="check_city_locations">
+                        <input ng-model="chosenPlace" type="text" autofocus="autofocus" class="form-control" googleplace class='large-8'>
+                    </form>
+                </span>
+            </div>
+        </section>
+
+        <section>
+            <div ng-repeat='loc in locations.wifi' class="large-4 small-12 columns blue">
+                <div class="titledaysinglepostmasonry">        
+                    <p class="titlesinglepostmasonry">{{ loc.name }}</p>
+                    <div class="daysinglepostmasonry">
+                    <p>15</p>
+                        <span>MAY</span>
+                    </div>    
+                </div> 
+                <p class="descriptionsinglepostmasonry">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin cursus, elit vitae fermentum hendrerit, neque erat fringilla nibh, vel sodales sem diam nec nunc. Donec mattis blandit metus ut volutpat. Quisque orci lectus, sodales at cursus et, gravida quis nisl.</p>   
+                <a class="areadmoresinglepostmasonry" href="guide-profile.html"><p class="readmoresinglepostmasonry">See Guide</p></a>
+            </div>
+        <!--  -->
+            <div class="contentarchivepagination paginationmasonry">
+                <div class="archivepagination">
+                    <a title="Previous Posts" class="btn prevbtn tooltip" href="#"><img alt="" src="vendor/images/blog/prevpagination.png"></a>
+                    <a title="Next Posts" class="btn nextbtn tooltip" href="blog-masonry-with-3-column-2.html"><img alt="" src="vendor/images/blog/nextpagination.png"></a>
+                </div>
+            </div>
+        </section>
+        <!--end internal page--> 
+</div>
+
+<div class="divider"><span></span></div>
+
+<section class='shareyourstory clearfix row'>
+    <div>
+        <h1>Cool stories from <br/> interesting People and Places.</h1>
+        <a href="#" class='button radius round'>Share Your Story</a>
+        <a href="#" id='listyourvenue' class='button radius round orange'>List Your Hotspot</a>
+        <h1>It's Free</h1>
+    </div>
+
+
+</section>
+
+<!--start page-->
+
+
+
+    <!--start footer-->
+<footer id="footer"  >
+    <div class='small-5 small-centered columns'> 
+            <ul class='inline-list'>
+              <li class='bottom-links'><a href="#">Contact</a></li>
+              <li class='bottom-links'><a href="#">Support</a></li>
+              <li class='bottom-links'><a href="#">How it Works</a></li>
+              <li class='bottom-links'><a href="#">Pricing</a></li>
+            </ul>
+        </div>
+</footer>
+    <!--end footer-->
+    
+    <!--start copyright-->
+    
+
+    <section id="copyright">
+        <!--start container-->
+        <div class="container">
+            <div class="large-12 small-10">
+                <small>© Copyright 2013 by Nicdark - All Rights Reserved</small>   
+            </div>    
+        </div>
+        <!--end container-->
+        <div class="backtotop">
+        	<a href="#startpage"><vendor/images alt="" src="vendor/images/footer/arrowbacktotop.png" /></a>
+        </div> 
+        
+    </section>
+    <!--end copyright-->
+	<!--Start js-->    
+    <script src="vendor/js/jquery.min.js"></script> <!--Jquery-->
+    <script src="vendor/js/jquery-ui.js"></script> <!--Jquery UI-->
+    <script src="vendor/js/excanvas.js"></script> <!--canvas need for ie-->
+    <script src="vendor/js/scroolto.js"></script> <!--Scrool To-->
+    <script src="vendor/js/jquery.nicescroll.min.js"></script> <!--Nice Scroll-->
+    <script src="vendor/js/jquery.inview.min.js"></script> <!--inview -->
+	<script src="vendor/js/menu/hoverIntent.js"></script> <!--superfish-->
+	<script src="vendor/js/menu/superfish.min.js"></script> <!--superfish -->
+    <script src="vendor/js/menu/tinynav.min.js"></script> <!--tinynav -->
+    <script src="vendor/js/jquery.parallax-1.1.3.js"></script> <!--parallax-->
+    <script src="vendor/js/isotope/jquery.isotope.min.js"></script> <!--isotope-->
+    <script src="vendor/js/settings.js"></script> <!--settings-->
+
+    <script src="javascript/angular.min.js"></script>
+    <script src='javascript/app.js'></script>
+    <script src='javascript/directives.js'></script>
+
+    <!--End js-->
+	
+	<script type='text/javascript'>
+		/* <![CDATA[ */
+		
+
+		//start parallax
+		jQuery(document).ready(function() {
+			$('.header-page').parallax("100%", 0.1);
+		});
+		//end parallax
+		
+		//start masonry
+		jQuery(document).ready(function() {
+
+			$(function(){
+						  
+			  //initialize
+			  var $container = $('.stylemasonry');
+			  
+
+			  $container.isotope({
+				itemSelector : '.singlemasonry'
+			  });
+			  //end initialize
+			  
+			  
+			  //start masonry
+			  $container.isotope({
+				itemSelector : '.singlemasonry'
+			  });
+			  // end masonry
+			  
+
+			 //relayout 
+			setInterval(function(){
+				$container.isotope('reLayout');
+			}, 0);
+			//reLayout
+			
+
+			});		   
+
+		});
+		//end masonry
+		
+		//start tooltip
+		$(document).ready(function() {
+			$( ".tooltip" ).tooltip({ position: { my: "top+0 top-75", at: "center center" } });
+		});
+		//end tooltip
+
+
+		/* ]]> */
+	</script>
+    
+</body>  
+</html>
