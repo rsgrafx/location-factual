@@ -28,7 +28,15 @@ class LocationFinder < Sinatra::Base
   end
 
   get '/views/:filename' do 
-    send_file File.join((settings.public_folder + 'views/'), "#{params['filename']}")
+    send_file File.join((settings.public_folder + '/views/'), "#{params['filename']}")
+  end
+
+  get '/dashboard' do
+    send_file File.join((settings.public_folder + '/views/dashboard/'), 'index.html')
+  end
+
+  get '/dashboard/:filename' do 
+    send_file File.join((settings.public_folder + '/views/dashboard/'), "#{params['filename']}")
   end
 
   get '/locations' do
