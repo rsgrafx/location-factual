@@ -26,7 +26,11 @@ angular.module('dashboard.controllers', [])
   };
 
   $scope.logout = function(user) {
+    
+  };
 
+  $scope.logged_in = function() {
+    return !!Session.isAuthenticated();
   };
 
   $scope.register = function(user) {
