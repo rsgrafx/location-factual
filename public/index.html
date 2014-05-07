@@ -112,7 +112,7 @@
 <!--start header-->
 <!-- fade-down animate1 navigationmenulight animated fadeInDown -->
 <!-- fade-down animate1 navigationmenulight -->
-<header id="navigationmenu" class="navigationmenulight top-bar">
+<header id="navigationmenu" class="navigationmenulight top-bar" ng-controller='NavCtrl'>
 	
     <!--start left menu close-->
     <div class="leftmenuclose">
@@ -132,7 +132,7 @@
             </li>
         </ul>
 
-        <ul class="sf-menu" id="nav">
+        <ul class="sf-menu" id="nav" ng-hide='logged_in()'>
             <li class="current orange">
             	<span class="menufilter"></span>
                 <a href="dashboard#!/login"><strong>Login</strong></a>
@@ -149,6 +149,21 @@
             </li> 
 
         </ul>   
+
+        <ul class="sf-menu" id="nav" ng-show='logged_in()'>
+            <li class="current orange">
+                <span class="menufilter"></span>
+                <a href="dashboard"><strong>Profile</strong></a>
+            </li>
+            
+
+            <li class="orange">
+              <span class="menufilter"></span>
+                <a href="/profile"><strong>Account</strong></a>
+            </li> 
+
+        </ul>   
+
         </div>
         <!--end navigation-->
     </div>
@@ -214,6 +229,7 @@
     <script src='javascript/app.authentication.js'></script>
     <script src='javascript/app.routes.js'></script>
     <script src='javascript/directives.js'></script>
+    <script src="javascript/shared/app.session.js"></script>
 
     <!--End js-->
 	
