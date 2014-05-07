@@ -1,4 +1,4 @@
-<div class='row'>
+<div class='row' ng-hide='logged_in()'>
     <div class='small-6 large-centered columns' >
         <form name="loginForm" class="auth-form">
             <h2 class="auth-form-heading">Please sign in</h2><br/>    
@@ -15,4 +15,8 @@
         <a class="button tiny round secondary" href="#!register">Register</a>
         </form>
     </div>
+</div>
+
+<div class='row' ng-show='logged_in()'>
+    <h3>Well Hello...</h3>
 </div>

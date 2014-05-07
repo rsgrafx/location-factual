@@ -6,9 +6,9 @@
   <script src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false&language=en"></script>
 </head>
 
-<body ng-app='LocationFinderDashboard' >
+<body ng-app='LocationFinderDashboard'>
   
-  <nav class='top-bar'>
+  <nav class='top-bar' ng-controller='NavCtrl'>
     <ul class="title-area">
       <li class="name">
         <h1><a href="#">App Dashboard</a></h1>
@@ -16,6 +16,13 @@
        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
       <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
     </ul>
+
+    <section class='top-bar-section'>
+      <ul class='right'>
+        <li ng-show='logged_in()'> <a ng-click='logOutUser()'>Log Out</a></li>
+        <li ng-hide='logged_in()'> <a href='/login'>Login</a></li>
+      </ul>
+    </section>
   </nav>  
   
   <ng-view></ng-view>
@@ -23,9 +30,11 @@
   <script src="javascript/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
   <script src='javascript/app.dashboard/index.js'></script>
-  <script src='javascript/app.dashboard/app.session.js'></script>
+  <script src='javascript/shared/app.session.js'></script>
   <script src='javascript/app.dashboard/app.controllers.js'></script>
   <script src='javascript/directives.js'></script>
+  <script src='javascript/app.dashboard/app.AuthTokenInterceptor.js'></script> 
+  
 
 </body>
 </html>
