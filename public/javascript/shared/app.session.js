@@ -7,7 +7,7 @@
 */
 angular.module('SessionService', [])
 
-.factory('Session', ['$location', '$http', '$q', function($location, $http, $q) {
+.factory('Session', ['$location', '$window', '$http', '$q', function( $location, $window, $http, $q) {
   
   function redirect(url) {
     url = url || '/dashboard';
@@ -16,26 +16,47 @@ angular.module('SessionService', [])
 
   var service = {
     login: function(email, password) {
-      return $http.post('http://localhost:3000/users/sign_in', { user: { email: email, password: password } })
-      .then( function(response) { 
-        service.currentUser = response.data.user; 
-        if (service.isAuthenticated()) {
-            $location.path('/dashboard')
-        };
-      });
+      return $http.post('http://localhost:3000/users/sign_in.json', { user: { email: email, password: password } })
+        .success( function( response, status, headers, config ) { 
+
+        // console.log(response);
+          
+          // At this point I should capture the - Token.          
+          if (response.user.authentication_token) {
+              $window.sessionStorage.token = response.user.authentication_token
+              console.log('This is the SessionStorage :' + $window.sessionStorage.token);
+          }
+        
+        // Rails does not return a nested user: object
+            service.currentUser = response;            
+          if (service.isAuthenticated()) {
+              $location.path('/welcome')
+          };
+
+      }).error(function (data, status, headers, config) {
+      // Erase the token if the user fails to log in
+      delete $window.sessionStorage.token;
+
+      // Handle login errors here
+      $scope.message = 'Error: Invalid user or password';
+
+      })
     },
     
     logout:  function(redirectTo) {
-     $http.delete('http://localhost:3000/users/sign_out')
-     .then(function(response) {
-      $http.defaults.headers.common['X-CSRF-Token'] = response.data.csrfToken;
+     // $http.delete('http://localhost:3000/users/sign_out.json')
+     // .then(function(response) {
+     //  // Will need to re implement this for auth based token.
+      
+     // })
+
+      delete $window.sessionStorage.token;
       service.currentUser = null;
-      redirect(redirecTo);
-     })
+      redirect('/login');
     },
 
     register: function(email, password, confirm_password) {
-      return $http.post('http://localhost:3000/users', { user: {email: email, password: password, confirm_password: confirm_password}})
+      return $http.post('http://localhost:3000/users.json', { user: {email: email, password: password, confirm_password: confirm_password}})
         .then(function(response) {
           service.currentUser = response.data;
           if (service.isAuthenticated()) {
@@ -57,7 +78,8 @@ angular.module('SessionService', [])
     currentUser: null,
 
     isAuthenticated: function() {
-      return !!service.currentUser;
+      return !!$window.sessionStorage.token;
+      // return !!service.currentUser;
     }
 
     // close service
