@@ -12,7 +12,7 @@ angular.module('dashboard.AuthTokenInterceptor', [])
         config.headers = config.headers || {};
 
         if ($window.sessionStorage.token) {
-          console.log('Interceptor:' + $window.sessionStorage.token);
+          console.log('AuthTokenInterceptor : ' + $window.sessionStorage.token);
           config.headers.Authorization = 'Token-Bearer ' + $window.sessionStorage.token;
         }
         return config
