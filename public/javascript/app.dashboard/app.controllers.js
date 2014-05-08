@@ -37,15 +37,18 @@ angular.module('dashboard.controllers', [])
     $scope.authError = null;
 
     Session.register(user.email, user.password, user.confirmation_password)
+      .then( function(response) {
+          $scope.authError = 'Successfully Registered'
+          console.log(response);
       
-      .then(function(response) {
-        console.log(response);
-      }, function(response) {
-        var errors = '';
-        $.each( response.data.errors, function(index, value) {
-          errors += index.substr(0,1).toUpperCase()+index.substr(1)+ ' '+ value +'';
+          }, function(response) {
+            var errors = '';
+            $.each( response.data.errors, function(index, value) {
+            errors += index.substr(0,1).toUpperCase()+index.substr(1)+ ' '+ value +'';
         });
+        
         $scope.authError = errors;
+      
       });
     };
 
