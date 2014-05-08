@@ -17,10 +17,8 @@ angular.module('SessionService', [])
   var service = {
     login: function(email, password) {
       return $http.post('http://localhost:3000/users/sign_in.json', { user: { email: email, password: password } })
-        .success( function( response, status, headers, config ) { 
-
-        // console.log(response);
-          
+        .success( function( response, status, headers, config ) {
+          // console.log(response);
           // At this point I should capture the - Token.          
           if (response.user.authentication_token) {
               $window.sessionStorage.token = response.user.authentication_token
@@ -44,12 +42,6 @@ angular.module('SessionService', [])
     },
     
     logout:  function(redirectTo) {
-     // $http.delete('http://localhost:3000/users/sign_out.json')
-     // .then(function(response) {
-     //  // Will need to re implement this for auth based token.
-      
-     // })
-
       delete $window.sessionStorage.token;
       service.currentUser = null;
       redirect('/login');
@@ -58,9 +50,16 @@ angular.module('SessionService', [])
     register: function(email, password, confirm_password) {
       return $http.post('http://localhost:3000/users.json', { user: {email: email, password: password, confirm_password: confirm_password}})
         .then(function(response) {
-          service.currentUser = response.data;
+          
+          service.currentUser = response.data.user;
+          console.log(response.data.user)
+          
+          if (response.data.user.authentication_token) {
+              $window.sessionStorage.token = response.data.user.authentication_token
+              console.log('This is the SessionStorage :' + $window.sessionStorage.token);
+          }
           if (service.isAuthenticated()) {
-            $location.path('/dashboard');
+            $location.path('/welcome');
           }
         })
     },
@@ -81,7 +80,6 @@ angular.module('SessionService', [])
       return !!$window.sessionStorage.token;
       // return !!service.currentUser;
     }
-
     // close service
   };
   return service;
