@@ -25,20 +25,25 @@ var LocationFinderDashboard = angular.module('LocationFinderDashboard', [
 .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     $locationProvider.hashPrefix('!');
     $routeProvider
-      .when('/profile', {templateUrl: 'views/dashboard/profile.html'})
+      .when('/profile', { templateUrl: 'views/dashboard/profile.html'})
       .when('/welcome', { templateUrl: 'views/dashboard/welcome.html'})
-      .when('/login',   { templateUrl: 'views/dashboard/login.html', controller: 'UsersCtrl' })
-      .when('/register',{templateUrl:  'views/dashboard/register.html'})
+      .when('/login',   { templateUrl: 'views/dashboard/login.html',  controller: 'UsersCtrl', access: true })
+      .when('/register',{templateUrl:  'views/dashboard/register.html', controller: 'UsersCtrl', access: true})
       .otherwise({templateUrl:'views/dashboard/welcome.html'})
 }])
 .run(['$rootScope', '$location', 'Session', function($rootScope, $location, Session) {
 
-  $rootScope.$on('$routeChangeStart', function(event) {
+  $rootScope.$on('$routeChangeStart', function(event, next, current) {
     // if not logged in.
     if (!Session.isAuthenticated()) {
       console.log('watch out thief');
       event.preventDefault();
-      $location.path('/login')
+     if (next.access) {
+        console.log(next.$$route.originalPath)
+        $location.path(next.$$route.originalPath)
+      } else {
+        $location.path('/login')
+      }
     }
   })
 }])
