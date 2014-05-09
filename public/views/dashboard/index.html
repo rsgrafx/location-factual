@@ -4,28 +4,39 @@
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.2.2/css/foundation.css">
   <title>Location Finder</title>
   <script src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false&language=en"></script>
+
+  <link rel="stylesheet" type="text/css" href="vendor/css/dashboard/default.css">
+  <link rel="stylesheet" type="text/css" href="vendor/css/dashboard/component.css">
 </head>
 
 <body ng-app='LocationFinderDashboard'>
   
-  <nav class='top-bar' ng-controller='NavCtrl'>
-    <ul class="title-area">
-      <li class="name">
-        <h1><a href="#!profile">App Dashboard</a></h1>
-      </li>
-       <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-    </ul>
-
-    <section class='top-bar-section'>
+  <nav ng-controller='NavCtrl'>
+    <section class=''>
       <ul class='right'>
-        <li ng-show='logged_in()'> <a ng-click='logOutUser()'>Log Out</a></li>
-        <li ng-hide='logged_in()'> <a href='#!/login'>Login</a></li>
+        <li  class='button alert'  ng-show='logged_in()'> <a ng-click='logOutUser()'>Log Out</a></li>
+        <li  class='button' ng-hide='logged_in()'> <a href='#!/login'>Login</a></li>
       </ul>
     </section>
+
+    <ul class="cbp-vimenu" ng-show='logged_in()'>
+        
+        <li><a href="#!profile" class="icon-logo">Logo</a></li>
+        <!-- <li><a href="#" class="icon-archive">Archive</a></li> -->
+        <!-- <li><a href="#" class="icon-search">Search</a></li> -->
+        <li><a href="#!guides" class="icon-pencil">Guides</a></li>
+        <!-- Example for active item:
+        <li class="cbp-vicurrent"><a href="#" class="icon-pencil">Pencil</a></li>
+        -->
+        <li><a href="#" class="icon-location">Location</a></li>
+        <li><a href="#" class="icon-images">Images</a></li>
+        <li><a href="#" class="icon-download">Download</a></li>
+    </ul>
+
   </nav>  
   
-  <ng-view></ng-view>
+  
+<ng-view></ng-view>
 
   <script src="javascript/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
@@ -37,8 +48,7 @@
 
   <script src='javascript/app.dashboard/app.controllers.js'></script>
   <script src='javascript/directives.js'></script>
-  
-  
+    
 
 </body>
 </html>
