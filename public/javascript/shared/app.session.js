@@ -78,7 +78,6 @@ angular.module('SessionService', [])
 
     isAuthenticated: function() {
       return !!$window.sessionStorage.token;
-      // return !!service.currentUser;
     }
     // close service
   };
