@@ -7,7 +7,8 @@
 */
 
 angular.module('dashboard.controllers', [])
-  .controller('UsersCtrl', ['$scope', 'Session', function UsersCtrl($scope, Session ) {
+  .controller('UsersCtrl', ['$scope', '$state', '$location', 'Session', 
+  function UsersCtrl($scope, $state, $location, Session ) {
   
   $scope.login = function(user) {
     $scope.authError = null;
@@ -51,6 +52,15 @@ angular.module('dashboard.controllers', [])
       
       });
     };
+
+  // testing state params..
+
+  $scope.$on('$stateChangeSuccess', function (event, toState) {
+      console.log(toState)
+      if (!Session.isAuthenticated()) {
+        $location.path('/login');
+      }
+  });
 
 }]).controller('HomeCtrl', ['$scope', '$window', '$http', function HomeCtrl($scope, $window, $http){
   $scope.position = null;
