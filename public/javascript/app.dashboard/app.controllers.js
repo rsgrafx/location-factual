@@ -58,7 +58,7 @@ angular.module('dashboard.controllers', [])
   $scope.$on('$stateChangeSuccess', function (event, toState) {
       console.log(toState)
       if (!Session.isAuthenticated()) {
-        $location.path('/login');
+        $location.path('login');
       }
   });
 
