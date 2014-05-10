@@ -5,7 +5,7 @@
 		url('fonts/ecoico.woff') format('woff'),
 		url('fonts/ecoico.ttf') format('truetype'),
 		url('fonts/ecoico.svg#ecoico') format('svg');
-	font-weight: normal;
+	font-weight: bold;
 	font-style: normal;
 }
 
@@ -64,12 +64,14 @@
 }
 
 .cbp-vimenu li a.icon-logo:before {
-	content: "C";
+	content: "M";
 	font-weight: 700;
 	font-size: 300%;
 	font-family: 'Lato', Calibri, Arial, sans-serif;
 }
-
+.icon-profile:before {
+	content: "\e000";
+}
 .icon-search:before {
 	content: "\e004";
 }
