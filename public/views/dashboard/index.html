@@ -2,6 +2,7 @@
 <head>
   
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.2.2/css/foundation.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
   <title>Location Finder</title>
   <script src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false&language=en"></script>
 
@@ -15,13 +16,14 @@
     <section class=''>
       <ul class='right'>
         <li  class='button alert'  ng-show='logged_in()'> <a ng-click='logOutUser()'>Log Out</a></li>
-        <li  class='button' ng-hide='logged_in()'> <a href='#login'>Login</a></li>
+        <li  class='button' ng-hide='logged_in()'> <a ui-sref='app.login'>Login</a></li>
       </ul>
     </section>
 
     <ul class="cbp-vimenu" ng-show='logged_in()'>
         
-        <li><a href="#/profile" class="icon-logo">Logo</a></li>
+        <li><a href="#/login" class="icon-logo">Logo</a></li>
+        <li><a href="#/profile" class='icon-profile'>Profile</a></li>
         <!-- <li><a href="#" class="icon-archive">Archive</a></li> -->
         <!-- <li><a href="#" class="icon-search">Search</a></li> -->
         <li><a href="#/guides" class="icon-pencil">Guides</a></li>
