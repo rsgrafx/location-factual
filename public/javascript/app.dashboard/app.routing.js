@@ -8,7 +8,7 @@ angular.module('dashboard.routing', ['ui.router'])
       .state( 'app', {
           url: '/',
           views: {
-            'header':   { templateUrl:  'views/dashboard/welcome.html' },
+            'header':   { templateUrl:  'views/shared/header.html' },
             'sidebar':  { template:  '' },
             'content':  { templateUrl:  'views/dashboard/login.html'},
             'footer':   { template:  '<small> Copyright me </small>' }
@@ -16,7 +16,7 @@ angular.module('dashboard.routing', ['ui.router'])
         access: true
 
       })
-      .state( 'login', {
+      .state( 'app.login', {
         url: 'login',
         views: {
           'content@': {
@@ -39,12 +39,15 @@ angular.module('dashboard.routing', ['ui.router'])
         views: {
           'content@': {
             templateUrl: 'views/dashboard/guides.html'
+          },
+          'header@': {
+            templateUrl: 'views/dashboard/guides/header.html'
           }
         },
         access: false
       })
       .state( 'app.guides.new', {
-        url: 'guides/new',
+        url: '/new',
         views: {
           'content@': {
             templateUrl: 'views/dashboard/new.guide.html'
@@ -57,6 +60,9 @@ angular.module('dashboard.routing', ['ui.router'])
         views: {
           'content@': {
             templateUrl: 'views/dashboard/profile.html'
+          },
+          'header@':  {
+            templateUrl: 'views/dashboard/profile/header.html'
           }
         },
         access: false
