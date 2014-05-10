@@ -21,6 +21,9 @@ angular.module('dashboard.routing', ['ui.router'])
         views: {
           'content@': {
             templateUrl: 'views/dashboard/login.html'
+          },
+          'header@': {
+            templateUrl: 'views/shared/header.html'
           }
         },
         access: true
